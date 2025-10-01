@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     StatisticsScreen(),
     CategoryTab(),
+    ScanReceiptScreen(),
   ];
 
   @override
@@ -30,20 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('KeuanganKu'),
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.camera_alt),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ScanReceiptScreen(),
-                ),
-              );
-            },
-            tooltip: 'Scan Struk',
-          ),
-        ],
       ),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
@@ -69,20 +56,27 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIcon: Icon(Icons.category),
             label: 'Kategori',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.camera_alt_outlined),
+            selectedIcon: Icon(Icons.camera_alt),
+            label: 'Scan Struk',
+          ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const AddTransactionScreen(),
-            ),
-          );
-        },
-        icon: const Icon(Icons.add),
-        label: const Text('Tambah'),
-      ),
+      floatingActionButton: _selectedIndex == 0
+          ? FloatingActionButton.extended(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddTransactionScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.add),
+              label: const Text('Tambah'),
+            )
+          : null,
     );
   }
 }

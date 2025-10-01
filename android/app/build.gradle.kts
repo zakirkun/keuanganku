@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.keuanganku"
+    namespace = "dev.zakir.keuanganku"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion  // Disabled - not needed for this app
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.keuanganku"
+        applicationId = "dev.zakir.keuanganku"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion  // Required for ML Kit

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'providers/transaction_provider.dart';
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   runApp(const MyApp());
 }
 
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         themeMode: ThemeMode.system,
-        home: const HomeScreen(),
+        home: const SplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

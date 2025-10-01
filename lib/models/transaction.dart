@@ -20,16 +20,26 @@ class Transaction {
   });
 
   Map<String, dynamic> toMap() {
-    return {
+    final map = {
       'id': id,
       'title': title,
       'amount': amount,
       'date': date.toIso8601String(),
       'category': category.name,
-      'notes': notes,
-      'receiptImagePath': receiptImagePath,
       'isIncome': isIncome ? 1 : 0,
     };
+    
+    // Only add notes if not null
+    if (notes != null) {
+      map['notes'] = notes;
+    }
+    
+    // Only add receiptImagePath if not null
+    if (receiptImagePath != null) {
+      map['receiptImagePath'] = receiptImagePath;
+    }
+    
+    return map;
   }
 
   factory Transaction.fromMap(Map<String, dynamic> map) {

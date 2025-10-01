@@ -68,15 +68,17 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
         date: _selectedDate,
         category: _selectedCategory,
         notes: _notesController.text.isEmpty ? null : _notesController.text,
+        receiptImagePath: widget.transaction?.receiptImagePath,
         isIncome: _isIncome,
       );
 
       final provider = context.read<TransactionProvider>();
 
-      if (widget.transaction == null) {
-        await provider.addTransaction(transaction);
-      } else {
+      // Check if this is an update (has id) or new transaction (no id)
+      if (widget.transaction?.id != null) {
         await provider.updateTransaction(transaction);
+      } else {
+        await provider.addTransaction(transaction);
       }
 
       if (mounted) {
