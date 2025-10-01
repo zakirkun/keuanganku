@@ -47,7 +47,7 @@ dependencies:
   shared_preferences: ^2.2.2
   
   # NFC
-  nfc_manager: ^3.5.0
+  nfc_manager: ^4.1.1
   
   # OCR untuk scan struk
   google_mlkit_text_recognition: ^0.15.0
